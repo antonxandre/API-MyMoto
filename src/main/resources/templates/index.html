@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<style>
+body {
+	background-color: #BDB3FF;
+}
+
+.container {
+	background-color: #DFE9FF;
+	border: 0.1px solid black;
+	border-radius: 15px;
+	padding: 25px;
+	margin-top: 45px;
+	margin-bottom: 45px;
+	width: 50%;
+	align-items: center;
+}
+
+#botao {
+	margin-right: 35px;
+}
+</style>
+<title>Formulário de cadastro</title>
+<script type="text/javascript">
+
+        function validarNome() {
+            var nome = document.getElementById("nome").value;
+            var erroNoNome = document.getElementById("erroNoNome");
+
+            if (nome == "") {
+                erroNoNome.innerHTML = 'Preencha o campo nome!';
+                return false;
+            }
+            if (nome.length < 3) {
+                erroNoNome.innerHTML = 'Insira seu nome corretamente';
+                return false;
+            }
+            if (nome.length > 200) {
+                erroNoNome.innerHTML = 'Nome não pode ter mais que 40 caracteres';
+                return false;
+            }
+            return true;
+        }
+        
+        function validar() {
+            return validarNome();
+        }
+    </script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-4">
+				<a th:href="@{'/cadastar'}">Novo</a>
+
+			</div>
+			<div class="col-sm">
+				<h1>Lembretes</h1>
+			</div>
+		</div>
+		<div class="container">
+			<table>
+				<tbody>
+					<tr th:each="lembretes : ${lembrete}">
+						<td th:text="${lembrete.nome}"></td>
+						<td th:text="${lembrete.descricao}"></td>
+						<td th:text="${lembrete.date}"></td>
+						<!-- <td><a th:href="@{'/aluno/atualizar/' + ${aluno.id}}">Atualizar</a></td>
+            <td><a th:href="@{'/aluno/excluir/' + ${aluno.id}}"><img width="25px" src="../excluir.png"></a></td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- JavaScript (Opcional)  -->
+		<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+			crossorigin="anonymous"></script>
+</body>
+
+</html>
