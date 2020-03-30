@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.edu.ifal.model.Lembrete;
 import br.edu.ifal.model.LembreteRepositorio;
 
-@Controller
+
 @RestController
 public class ControladorLembrete {
 	@Autowired
