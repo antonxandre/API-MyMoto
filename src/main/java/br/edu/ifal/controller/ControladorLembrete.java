@@ -21,10 +21,9 @@ public class ControladorLembrete {
 
 
 	@RequestMapping("/")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("lembrete", new Lembrete());
-		return mv;
+	public String index() {
+	
+		return "Hello World";
 	}
 
 	@RequestMapping(value = "/usuario", method = RequestMethod.GET, produces = "application/json")
@@ -33,12 +32,5 @@ public class ControladorLembrete {
 		return repo.findAll();
 	}
 
-	
 
-	@RequestMapping("/cadastrar")
-	public ModelAndView cadastrar() {
-		ModelAndView mv = new ModelAndView("cadastrar.html");
-		mv.addObject("lembrete", new Lembrete());
-		return mv;
-	}
 }
