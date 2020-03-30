@@ -19,6 +19,10 @@ public class Lembrete {
 	private String nome;
 	private String email;
 
+	public Lembrete(){
+		
+	}
+
 	public Lembrete(long id, String nome, String email) {
 		this.id = id;
 		this.nome = nome;
