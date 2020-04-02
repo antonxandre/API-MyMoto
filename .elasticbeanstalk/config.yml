@@ -1,10 +1,9 @@
 branch-defaults:
   master:
-    environment: null
+    environment: api-my-moto-dev
     group_suffix: null
 deploy:
-  artifact: target/api-mymoto-1.0.0.jar
-
+  artifact: target/gerenciador-0.0.1-SNAPSHOT.jar
 global:
   application_name: api-my-moto
   branch: null
