@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="lembrete")
+@Table(name = "lembrete")
 public class Lembrete {
 
 	@Id
@@ -19,8 +19,8 @@ public class Lembrete {
 	private String nome;
 	private String email;
 
-	public Lembrete(){
-		
+	public Lembrete() {
+
 	}
 
 	public Lembrete(long id, String nome, String email) {
