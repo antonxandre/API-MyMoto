@@ -1,9 +1,13 @@
 package br.edu.ifal.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Entity;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +40,22 @@ public class ControladorLembrete {
 	public Iterable<Lembrete> findAll() {
 		return repo.findAll();
 	}
-	
+
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public Lembrete salvarUsuario(@RequestBody Map<String, String> json) {
+	public Lembrete salvarUsuario(@RequestBody final String json) {
+		final ObjectMapper mapper = new ObjectMapper();
 		Lembrete lembrete = new Lembrete();
 
-		for (Map.Entry<String, String> entry : json.entrySet()) {
-			System.out.println(entry.getKey() + ":" + entry.getValue().toString());
-			lembrete.setNome(entry.getValue());
+		try {
+			lembrete = mapper.readValue(json, Lembrete.class);
+			System.out.println("ResultingJSONstring = " + json);
+			// System.out.println(json);
+		} catch (final JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println(json);
 
 		return repo.save(lembrete);
 	}
