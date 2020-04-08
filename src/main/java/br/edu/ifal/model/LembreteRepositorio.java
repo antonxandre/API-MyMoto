@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LembreteRepositorio extends CrudRepository<Lembrete, Long>{
-
+	Lembrete findById(long id);
 }
