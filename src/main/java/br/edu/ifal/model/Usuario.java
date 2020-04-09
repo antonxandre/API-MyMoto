@@ -1,7 +1,4 @@
 package br.edu.ifal.model;
-
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lembrete")
-public class Lembrete {
+@Table(name = "usuarios")
+public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,11 +19,11 @@ public class Lembrete {
 	private String telefone;
 	private String senha;
 
-	public Lembrete() {
+	public Usuario() {
 
 	}
 
-	public Lembrete(long id, String nome, String email) {
+	public Usuario(long id, String nome, String email) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;

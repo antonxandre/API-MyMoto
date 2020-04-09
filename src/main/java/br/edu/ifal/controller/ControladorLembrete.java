@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.edu.ifal.model.Lembrete;
+import br.edu.ifal.model.Usuario;
 import br.edu.ifal.model.LembreteRepositorio;
+import br.edu.ifal.model.Usuario;
 
 @RestController
 public class ControladorLembrete {
@@ -37,17 +38,17 @@ public class ControladorLembrete {
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.GET, produces = "application/json")
 	@GetMapping
-	public Iterable<Lembrete> findAll() {
+	public Iterable<Usuario> findAll() {
 		return repo.findAll();
 	}
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public Lembrete salvarUsuario(@RequestBody final String json) {
+	public Usuario salvarUsuario(@RequestBody final String json) {
 		final ObjectMapper mapper = new ObjectMapper();
-		Lembrete lembrete = new Lembrete();
+		Usuario usuario = new Usuario();
 
 		try {
-			lembrete = mapper.readValue(json, Lembrete.class);
+			usuario = mapper.readValue(json, Usuario.class);
 			System.out.println("ResultingJSONstring = " + json);
 			// System.out.println(json);
 		} catch (final JsonProcessingException e) {
@@ -57,7 +58,7 @@ public class ControladorLembrete {
 			e.printStackTrace();
 		}
 
-		return repo.save(lembrete);
+		return repo.save(usuario);
 	}
 
 }
