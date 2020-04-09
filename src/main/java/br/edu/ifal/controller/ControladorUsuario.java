@@ -1,34 +1,27 @@
 package br.edu.ifal.controller;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
-import javax.persistence.Entity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import br.edu.ifal.model.Usuario;
-import br.edu.ifal.model.LembreteRepositorio;
-import br.edu.ifal.model.Usuario;
+import br.edu.ifal.model.UsuarioRepositorio;
 
 @RestController
-public class ControladorLembrete {
+public class ControladorUsuario {
 	@Autowired
-	LembreteRepositorio repo;
+	UsuarioRepositorio repo;
 
 	@RequestMapping("/")
 	public String index() {
@@ -40,6 +33,11 @@ public class ControladorLembrete {
 	@GetMapping
 	public Iterable<Usuario> findAll() {
 		return repo.findAll();
+	}
+
+	@GetMapping("/usuarios/{id}")
+	public Usuario buscarUsuarioId(@PathVariable(value = "id") long id) {
+		return repo.findById(id);
 	}
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
