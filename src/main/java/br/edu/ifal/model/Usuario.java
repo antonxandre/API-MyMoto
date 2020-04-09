@@ -1,4 +1,6 @@
 package br.edu.ifal.model;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,7 @@ public class Usuario {
 
 	private String nome;
 	private String login;
+	@Column(name = "email", unique = true)
 	private String email;
 	private String telefone;
 	private String senha;
