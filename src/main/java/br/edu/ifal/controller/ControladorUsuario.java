@@ -71,9 +71,9 @@ public class ControladorUsuario {
 			usuario.setNome(newUsuario.getNome());
 			usuario.setLogin(newUsuario.getLogin());
 			usuario.setEmail(newUsuario.getEmail());
-
+			usuario.setMoto(newUsuario.getMoto());
 			repo.save(usuario);
-			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK.CREATED);
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}

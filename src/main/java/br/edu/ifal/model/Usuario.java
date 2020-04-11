@@ -1,14 +1,13 @@
 package br.edu.ifal.model;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,8 +27,8 @@ public class Usuario {
 	private String email;
 	private String telefone;
 	private String senha;
-	@OneToMany
-	private List<Moto> motos;
+	@OneToOne
+	private Moto moto;
 
 	@CreationTimestamp
 	private LocalDateTime dataDeCriacao;
@@ -96,14 +95,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<Moto> getMotos() {
-		return motos;
-	}
-
-	public void setMotos(List<Moto> motos) {
-		this.motos = motos;
-	}
-
 	public LocalDateTime getDataDeCriacao() {
 		return dataDeCriacao;
 	}
@@ -118,6 +109,14 @@ public class Usuario {
 
 	public void setDataDeAlteracao(LocalDateTime dataDeAlteracao) {
 		this.dataDeAlteracao = dataDeAlteracao;
+	}
+
+	public Moto getMoto() {
+		return moto;
+	}
+
+	public void setMoto(Moto moto) {
+		this.moto = moto;
 	}
 
 }

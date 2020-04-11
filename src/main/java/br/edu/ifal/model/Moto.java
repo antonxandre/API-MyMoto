@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -19,13 +19,13 @@ public class Moto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @ManyToOne
-    private Usuario usuario;
+
     private String nome;
     private String modelo;
     private String marca;
     private double cilindradas;
+    @OneToOne
+    private Usuario usuario;
 
     @CreationTimestamp
     private LocalDateTime dataDeCriacao;
@@ -43,14 +43,6 @@ public class Moto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public String getNome() {
@@ -99,6 +91,14 @@ public class Moto {
 
     public void setDataDeAlteracao(LocalDateTime dataDeAlteracao) {
         this.dataDeAlteracao = dataDeAlteracao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }
