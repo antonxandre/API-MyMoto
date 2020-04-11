@@ -1,11 +1,19 @@
 package br.edu.ifal.model;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "usuarios")
@@ -14,13 +22,20 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
 	private String nome;
 	private String login;
 	@Column(name = "email", unique = true)
 	private String email;
 	private String telefone;
 	private String senha;
+	@OneToMany
+	private List<Moto> motos;
+
+	@CreationTimestamp
+	private LocalDateTime dataDeCriacao;
+
+	@UpdateTimestamp
+	private LocalDateTime dataDeAlteracao;
 
 	public Usuario() {
 
@@ -32,8 +47,6 @@ public class Usuario {
 		this.email = email;
 
 	}
-	// private String descricao;
-	// private Date date;
 
 	public long getId() {
 		return id;
@@ -51,18 +64,6 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	// public String getDescricao() {
-	// return descricao;
-	// }
-	// public void setDescricao(String descricao) {
-	// this.descricao = descricao;
-	// }
-	// public Date getDate() {
-	// return date;
-	// }
-	// public void setDate(Date date) {
-	// this.date = date;
-	// }
 	public String getEmail() {
 		return email;
 	}
@@ -93,6 +94,30 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Moto> getMotos() {
+		return motos;
+	}
+
+	public void setMotos(List<Moto> motos) {
+		this.motos = motos;
+	}
+
+	public LocalDateTime getDataDeCriacao() {
+		return dataDeCriacao;
+	}
+
+	public void setDataDeCriacao(LocalDateTime dataDeCriacao) {
+		this.dataDeCriacao = dataDeCriacao;
+	}
+
+	public LocalDateTime getDataDeAlteracao() {
+		return dataDeAlteracao;
+	}
+
+	public void setDataDeAlteracao(LocalDateTime dataDeAlteracao) {
+		this.dataDeAlteracao = dataDeAlteracao;
 	}
 
 }
