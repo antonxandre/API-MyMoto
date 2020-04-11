@@ -1,12 +1,16 @@
 package br.edu.ifal.controller;
 
 import java.io.IOException;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -36,7 +40,7 @@ public class ControladorUsuario {
 	}
 
 	@GetMapping("/usuarios/{id}")
-	public Usuario buscarUsuarioId(@PathVariable(value = "id") long id) {
+	public Optional<Usuario> buscarUsuarioId(@PathVariable(value = "id") long id) {
 		return repo.findById(id);
 	}
 
@@ -47,16 +51,31 @@ public class ControladorUsuario {
 
 		try {
 			usuario = mapper.readValue(json, Usuario.class);
-			System.out.println("ResultingJSONstring = " + json);
-			// System.out.println(json);
+
 		} catch (final JsonProcessingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
 		return repo.save(usuario);
+	}
+
+	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Usuario> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Usuario newUsuario) {
+		Optional<Usuario> oldUsuario = repo.findById(id);
+
+		if (oldUsuario.isPresent()) {
+			Usuario usuario = oldUsuario.get();
+			usuario.setNome(newUsuario.getNome());
+			usuario.setLogin(newUsuario.getLogin());
+			usuario.setEmail(newUsuario.getEmail());
+
+			repo.save(usuario);
+			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+		} else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 }
