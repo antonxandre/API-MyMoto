@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResourceAccessException;
 
+import br.edu.ifal.error.ResourceNotFoundException;
 import br.edu.ifal.model.Usuario;
 import br.edu.ifal.model.UsuarioRepositorio;
 
@@ -41,6 +43,7 @@ public class ControladorUsuario {
 
 	@GetMapping("/usuarios/{id}")
 	public Optional<Usuario> buscarUsuarioId(@PathVariable(value = "id") long id) {
+		verificarSeUsuarioExiste(id);
 		return repo.findById(id);
 	}
 
@@ -63,9 +66,10 @@ public class ControladorUsuario {
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Usuario> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Usuario newUsuario) {
+		verificarSeUsuarioExiste(id);
+		
 		Optional<Usuario> oldUsuario = repo.findById(id);
-
-		if (oldUsuario.isPresent()) {
+		//if (oldUsuario.isPresent()) {
 			Usuario usuario = oldUsuario.get();
 			usuario.setNome(newUsuario.getNome());
 			usuario.setLogin(newUsuario.getLogin());
@@ -73,8 +77,16 @@ public class ControladorUsuario {
 			usuario.setMoto(newUsuario.getMoto());
 			repo.save(usuario);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK.CREATED);
-		} else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		/*} 
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);*/
+	}
+	
+	private void verificarSeUsuarioExiste(long id) {
+		Optional<Usuario> usuario = repo.findById(id);
+		if(!usuario.isPresent()) {
+			throw new ResourceNotFoundException("Usuário não encontrado com ID: "+id);
+		}
 	}
 
 }
