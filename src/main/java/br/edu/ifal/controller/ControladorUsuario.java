@@ -70,8 +70,7 @@ public class ControladorUsuario {
 		verificarSeUsuarioExiste(id);
 		
 		Optional<Usuario> oldUsuario = repo.findById(id);
-		
-		if (oldUsuario.isPresent()) {
+		//if (oldUsuario.isPresent()) {
 			Usuario usuario = oldUsuario.get();
 			usuario.setNome(newUsuario.getNome());
 			usuario.setLogin(newUsuario.getLogin());
@@ -79,8 +78,9 @@ public class ControladorUsuario {
 			usuario.setMoto(newUsuario.getMoto());
 			repo.save(usuario);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK.CREATED);
-		} else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		/*} 
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);*/
 	}
 	
 	private void verificarSeUsuarioExiste(long id) {
