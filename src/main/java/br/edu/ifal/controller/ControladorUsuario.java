@@ -48,7 +48,6 @@ public class ControladorUsuario {
 	public Usuario salvarUsuario(@RequestBody final String json) {
 		final ObjectMapper mapper = new ObjectMapper();
 		Usuario usuario = new Usuario();
-
 		try {
 			usuario = mapper.readValue(json, Usuario.class);
 
