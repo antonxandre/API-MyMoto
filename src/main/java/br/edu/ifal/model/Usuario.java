@@ -2,14 +2,21 @@ package br.edu.ifal.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,13 +28,20 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@NotEmpty(message = "{nome.vazio} ")
 	private String nome;
+	@NotEmpty(message = "{login.vazio}")
 	private String login;
+	@NotEmpty(message = "{email.vazio}")
+	@Email
 	@Column(name = "email", unique = true)
 	private String email;
 	private String telefone;
+	@NotEmpty(message = "{senha.vazio}")
+	@Size(min = 6, max = 50, message = "{senha.charmin}")
 	private String senha;
-	@OneToOne
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Moto moto;
 
 	@CreationTimestamp
@@ -40,18 +54,20 @@ public class Usuario {
 
 	}
 
-	public Usuario(long id, String nome, String email) {
+	public Usuario(final long id, final String nome, final String email) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 
 	}
 
+	// getter setters
+
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(final long id) {
 		this.id = id;
 	}
 
@@ -59,7 +75,7 @@ public class Usuario {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(final String nome) {
 		this.nome = nome;
 	}
 
@@ -67,7 +83,7 @@ public class Usuario {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
@@ -75,7 +91,7 @@ public class Usuario {
 		return login;
 	}
 
-	public void setLogin(String login) {
+	public void setLogin(final String login) {
 		this.login = login;
 	}
 
@@ -83,7 +99,7 @@ public class Usuario {
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
+	public void setTelefone(final String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -91,7 +107,7 @@ public class Usuario {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
+	public void setSenha(final String senha) {
 		this.senha = senha;
 	}
 
@@ -99,7 +115,7 @@ public class Usuario {
 		return dataDeCriacao;
 	}
 
-	public void setDataDeCriacao(LocalDateTime dataDeCriacao) {
+	public void setDataDeCriacao(final LocalDateTime dataDeCriacao) {
 		this.dataDeCriacao = dataDeCriacao;
 	}
 
@@ -107,7 +123,7 @@ public class Usuario {
 		return dataDeAlteracao;
 	}
 
-	public void setDataDeAlteracao(LocalDateTime dataDeAlteracao) {
+	public void setDataDeAlteracao(final LocalDateTime dataDeAlteracao) {
 		this.dataDeAlteracao = dataDeAlteracao;
 	}
 
@@ -115,7 +131,7 @@ public class Usuario {
 		return moto;
 	}
 
-	public void setMoto(Moto moto) {
+	public void setMoto(final Moto moto) {
 		this.moto = moto;
 	}
 

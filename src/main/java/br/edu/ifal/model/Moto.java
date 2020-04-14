@@ -1,11 +1,15 @@
 package br.edu.ifal.model;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,14 +22,17 @@ public class Moto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     private String nome;
     private String modelo;
     private String marca;
     private double cilindradas;
+
     @OneToOne
     private Usuario usuario;
+
+    private double id_usuario;
 
     @CreationTimestamp
     private LocalDateTime dataDeCriacao;
@@ -37,11 +44,11 @@ public class Moto {
 
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -99,6 +106,14 @@ public class Moto {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public double getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(double id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
 }
