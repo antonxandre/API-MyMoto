@@ -36,7 +36,7 @@ public class ControladorUsuario {
 	@RequestMapping("/")
 	public String index() {
 
-		return "Hello World";
+		return "Hello World!";
 	}
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.GET, produces = "application/json")
