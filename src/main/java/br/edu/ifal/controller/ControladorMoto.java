@@ -22,7 +22,7 @@ public class ControladorMoto {
     @Autowired
     MotoModeloRepositorio repositorioModelosMotos;
 
-    @RequestMapping(value = "/motos", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/motos", method = RequestMethod.GET)
     @GetMapping
     public Iterable<MotoModelo> buscarTodasMotos() {
         return repositorioModelosMotos.findAll();

@@ -29,6 +29,7 @@ public class MotoModelo {
     private double km_max_embreagem;
     private double km_max_pneus;
     private double km_max_suspensao;
+    
 
     public long getId() {
         return id;
