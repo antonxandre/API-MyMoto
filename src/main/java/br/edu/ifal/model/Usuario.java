@@ -28,17 +28,17 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	@NotEmpty(message = "{nome.vazio} ")
+	@NotEmpty(message = "Nome vazio")
 	private String nome;
-	@NotEmpty(message = "{login.vazio}")
+	@NotEmpty(message = "Login vazio")
 	private String login;
-	@NotEmpty(message = "{email.vazio}")
+	@NotEmpty(message = "Email vazio")
 	@Email
 	@Column(name = "email", unique = true)
 	private String email;
 	private String telefone;
-	@NotEmpty(message = "{senha.vazio}")
-	@Size(min = 6, max = 50, message = "{senha.charmin}")
+	@NotEmpty(message = "Senha vazio")
+	@Size(min = 6, max = 50, message = "A senha deve ter mais de 6 caracteres")
 	private String senha;
 
 	@OneToOne(cascade = CascadeType.ALL)

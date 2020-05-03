@@ -52,9 +52,10 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public LocalValidatorFactoryBean salvarUsuario(@Valid @RequestBody final Usuario usuario) {
+	public ResponseEntity<Usuario> salvarUsuario(@RequestBody @Valid Usuario usuario) {
 		repo.save(usuario);
-		return getValidator();
+		usuario.getMoto().setId_usuario(usuario.getId());
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
@@ -62,17 +63,18 @@ public class ControladorUsuario {
 		verificarSeUsuarioExiste(id);
 
 		Optional<Usuario> oldUsuario = repo.findById(id);
-		// if (oldUsuario.isPresent()) {
-		Usuario usuario = oldUsuario.get();
-		usuario.setNome(newUsuario.getNome());
-		usuario.setLogin(newUsuario.getLogin());
-		usuario.setEmail(newUsuario.getEmail());
-		usuario.setMoto(newUsuario.getMoto());
-		repo.save(usuario);
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK.CREATED);
-		/*
-		 * } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		 */
+		if (oldUsuario.isPresent()) {
+			Usuario usuario = oldUsuario.get();
+			usuario.setNome(newUsuario.getNome());
+			usuario.setLogin(newUsuario.getLogin());
+			usuario.setEmail(newUsuario.getEmail());
+			usuario.setMoto(newUsuario.getMoto());
+			repo.save(usuario);
+			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK.CREATED);
+
+		} else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 
 	private void verificarSeUsuarioExiste(long id) {
@@ -88,13 +90,6 @@ public class ControladorUsuario {
 		messageSource.setBasename("classpath:messages");
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
-	}
-
-	@Bean
-	public LocalValidatorFactoryBean getValidator() {
-		LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
-		bean.setValidationMessageSource(messageSource());
-		return bean;
 	}
 
 }
