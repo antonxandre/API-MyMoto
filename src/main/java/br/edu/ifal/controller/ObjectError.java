@@ -1,13 +1,12 @@
 package br.edu.ifal.controller;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 public class ObjectError {
 
     private final String message;
     private final String field;
     private final Object parameter;
+
+
 
     public ObjectError(String message, String field, Object parameter) {
         this.message = message;
@@ -26,6 +25,8 @@ public class ObjectError {
     public Object getParameter() {
         return parameter;
     }
+
+    
 
 
     

@@ -2,8 +2,6 @@ package br.edu.ifal.controller;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-@AllArgsConstructor
 public class ErrorResponse {
 
     private final String message;
