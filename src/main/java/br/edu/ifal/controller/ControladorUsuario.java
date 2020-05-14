@@ -109,7 +109,6 @@ public class ControladorUsuario {
 		} catch (final JsonProcessingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
 		return new ResponseEntity<Usuario>(new Usuario(), HttpStatus.NOT_FOUND);
