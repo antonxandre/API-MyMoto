@@ -1,6 +1,8 @@
 package br.edu.ifal.controller;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -90,6 +92,27 @@ public class ControladorUsuario {
 		messageSource.setBasename("classpath:messages");
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
+	}
+
+	@RequestMapping(value = "/autenticar", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public ResponseEntity<Usuario> autenticar(@RequestBody String json) {
+		final ObjectMapper mapper = new ObjectMapper();
+		Iterable<Usuario> usuarios = repo.findAll();
+		try {
+			final Usuario usuarioAuth = mapper.readValue(json, Usuario.class);
+			for (Usuario usuario : usuarios) {
+				if (usuario.getEmail().equals(usuarioAuth.getEmail())
+						&& usuario.getSenha().equals(usuarioAuth.getSenha())) {
+					return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+				}
+			}
+		} catch (final JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		return new ResponseEntity<Usuario>(new Usuario(), HttpStatus.NOT_FOUND);
 	}
 
 }
