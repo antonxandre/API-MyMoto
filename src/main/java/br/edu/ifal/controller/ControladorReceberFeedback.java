@@ -16,7 +16,6 @@ public class ControladorReceberFeedback {
 	@Autowired
 	ReceberFeedbackRepositorio repoFeedback;
 	
-	@RequestMapping(value= "/feedback", method = RequestMethod.GET)
 	@GetMapping
 	public void receberFeedback() {
 		repoFeedback.findAll();
