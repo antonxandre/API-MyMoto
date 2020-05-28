@@ -32,11 +32,10 @@ public class ControladorReceberFeedback {
 		return repoFeedback.findById(id);
 	}
 	
-    @RequestMapping(value = "/feedback", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    	public ResponseEntity<ReceberFeedback> enviarFeedback(@RequestBody ReceberFeedback feedback) {
-    	repoFeedback.save(feedback);
-    	feedback.getMensagemDoUsuario();
-		return new ResponseEntity<ReceberFeedback>(feedback, HttpStatus.CREATED);
-    }
+//    @RequestMapping(value = "/feedback", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+//    	public ResponseEntity<ReceberFeedback> enviarFeedback(@RequestBody ReceberFeedback feedback) {
+//    	repoFeedback.save(feedback);
+//		return new ResponseEntity<ReceberFeedback>(feedback, HttpStatus.CREATED);
+//    }
     
 }
