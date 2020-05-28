@@ -28,7 +28,7 @@ public class ControladorReceberFeedback {
 	}
 	
 	@GetMapping("/feedback/{id}")
-	public Optional<ReceberFeedback> buscarUsuarioId(@PathVariable(value = "id") long id) {
+	public Optional<ReceberFeedback> buscarFeedbackId(@PathVariable(value = "id") long id) {
 		return repoFeedback.findById(id);
 	}
 	
