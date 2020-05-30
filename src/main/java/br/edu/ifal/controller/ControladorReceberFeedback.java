@@ -34,7 +34,7 @@ public class ControladorReceberFeedback {
 	}
 	
 	@PostMapping("/feedback")
-	public ReceberFeedback enviarFeedback(@RequestBody ReceberFeedback feedback) {
+	public ReceberFeedback receberFeedback(@RequestBody ReceberFeedback feedback) {
 		return repoFeedback.save(feedback);
 	}
     
