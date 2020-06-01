@@ -17,8 +17,10 @@ public class ReceberFeedback {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String mensagemDoUsuario;
+	private String informacoesDoAparelho;
 	@CreationTimestamp
 	private LocalDateTime dataDeEnvio;
+	
 	
 	public String getMensagemDoUsuario() {
 		return mensagemDoUsuario;
@@ -38,7 +40,12 @@ public class ReceberFeedback {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+	public String getInformacoesDoAparelho() {
+		return informacoesDoAparelho;
+	}
+	public void setInformacoesDoAparelho(String informacoesDoAparelho) {
+		this.informacoesDoAparelho = informacoesDoAparelho;
+	}
 	
 	
 }
