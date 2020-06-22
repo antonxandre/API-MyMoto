@@ -36,6 +36,8 @@ public class Usuario {
 	@Email
 	@Column(name = "email", unique = true)
 	private String email;
+	@Column(name = "tokenUid", unique = true)
+	private String tokenUid;
 	private String telefone;
 	@NotEmpty(message = "Senha vazio")
 	@Size(min = 6, max = 50, message = "A senha deve ter mais de 6 caracteres")
