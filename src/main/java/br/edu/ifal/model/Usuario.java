@@ -137,4 +137,12 @@ public class Usuario {
 		this.moto = moto;
 	}
 
+	public String getTokenUid() {
+		return tokenUid;
+	}
+
+	public void setTokenUid(String tokenUid) {
+		this.tokenUid = tokenUid;
+	}
+
 }
