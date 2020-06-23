@@ -21,10 +21,11 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
-
+	@ApiModelProperty(value = "Código da pessoa")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;

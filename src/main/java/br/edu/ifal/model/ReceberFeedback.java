@@ -6,13 +6,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.CreationTimestamp;
+
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "feedback")
 public class ReceberFeedback {
-	
+	@ApiModelProperty(value = "ID Do feedback")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
