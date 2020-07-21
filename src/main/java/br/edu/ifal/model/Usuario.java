@@ -21,10 +21,11 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
-
+	@ApiModelProperty(value = "Código da pessoa")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -36,6 +37,8 @@ public class Usuario {
 	@Email
 	@Column(name = "email", unique = true)
 	private String email;
+	@Column(name = "tokenUid", unique = true)
+	private String tokenUid;
 	private String telefone;
 	@NotEmpty(message = "Senha vazio")
 	@Size(min = 6, max = 50, message = "A senha deve ter mais de 6 caracteres")
@@ -133,6 +136,14 @@ public class Usuario {
 
 	public void setMoto(final Moto moto) {
 		this.moto = moto;
+	}
+
+	public String getTokenUid() {
+		return tokenUid;
+	}
+
+	public void setTokenUid(String tokenUid) {
+		this.tokenUid = tokenUid;
 	}
 
 }
