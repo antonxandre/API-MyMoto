@@ -54,22 +54,22 @@ public class ControladorMoto {
     }
 
     @PutMapping("/usuarios/{id}/moto")
-    public ResponseEntity<Moto> alterarMoto(@PathVariable(value = "id") long id, @Valid @RequestBody Moto novaMoto) {
+    public ResponseEntity<Moto> renovarAtributosDaMoto(@PathVariable(value = "id") long id, @Valid @RequestBody Moto atributoDaMotoRenovado) {
         Optional<Usuario> usuario;
         usuario = repositorioUsuario.findById(id);
-        Moto oldMoto = usuario.get().getMoto();
-        if (oldMoto != null) {
-           // oldMoto.setMedia_diaria_km(novaMoto.getMedia_diaria_km());
-            oldMoto.setContador_dias(novaMoto.getContador_dias());
-            oldMoto.setKm_atual_acelerador(novaMoto.getKm_atual_acelerador());
-            oldMoto.setKm_atual_embreagem(novaMoto.getKm_atual_embreagem());
-            oldMoto.setKm_atual_freio(novaMoto.getKm_atual_freio());
-            oldMoto.setKm_atual_pneus(novaMoto.getKm_atual_pneus());
-            oldMoto.setKm_atual_suspensao(novaMoto.getKm_atual_suspensao());
-            oldMoto.setKm_atual_troca_oleo(novaMoto.getKm_atual_troca_oleo());
-            oldMoto.setKm_atual_vela(novaMoto.getKm_atual_vela());
-            repo.save(oldMoto);
-            return new ResponseEntity<Moto>(oldMoto, HttpStatus.OK.CREATED);
+        Moto atributosAntigosDaMoto = usuario.get().getMoto();
+        if (atributosAntigosDaMoto != null) {
+           // oldMoto.setMedia_diaria_km(atributoDaMotoRenovado.getMedia_diaria_km());
+           atributosAntigosDaMoto.setContador_dias(atributoDaMotoRenovado.getContador_dias());
+           atributosAntigosDaMoto.setKm_atual_acelerador(atributoDaMotoRenovado.getKm_atual_acelerador());
+           atributosAntigosDaMoto.setKm_atual_embreagem(atributoDaMotoRenovado.getKm_atual_embreagem());
+           atributosAntigosDaMoto.setKm_atual_freio(atributoDaMotoRenovado.getKm_atual_freio());
+           atributosAntigosDaMoto.setKm_atual_pneus(atributoDaMotoRenovado.getKm_atual_pneus());
+           atributosAntigosDaMoto.setKm_atual_suspensao(atributoDaMotoRenovado.getKm_atual_suspensao());
+           atributosAntigosDaMoto.setKm_atual_troca_oleo(atributoDaMotoRenovado.getKm_atual_troca_oleo());
+           atributosAntigosDaMoto.setKm_atual_vela(atributoDaMotoRenovado.getKm_atual_vela());
+            repo.save(atributosAntigosDaMoto);
+            return new ResponseEntity<Moto>(atributosAntigosDaMoto, HttpStatus.OK.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
