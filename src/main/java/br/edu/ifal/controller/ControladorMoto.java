@@ -54,7 +54,7 @@ public class ControladorMoto {
     }
 
     @PutMapping("/usuarios/{id}/moto")
-    public ResponseEntity<Moto> alterarMoto(@PathVariable(value = "id") long id, @Valid @RequestBody Moto novaMoto) {
+    public ResponseEntity<Moto> renovarAtributosDaMoto(@PathVariable(value = "id") long id, @Valid @RequestBody Moto novaMoto) {
         Optional<Usuario> usuario;
         usuario = repositorioUsuario.findById(id);
         Moto oldMoto = usuario.get().getMoto();
@@ -86,6 +86,7 @@ public class ControladorMoto {
             oldMoto.setKm_atual_vela(novaMoto.getKm_atual_vela());
             repo.save(oldMoto);
             return new ResponseEntity<Moto>(oldMoto, HttpStatus.OK.CREATED);
+
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
