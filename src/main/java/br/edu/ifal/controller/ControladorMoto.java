@@ -69,7 +69,7 @@ public class ControladorMoto {
         		oldMoto.setMarca(novaMoto.getMarca());
         	}
         	if(novaMoto.getCilindradas() != null) {
-        		
+        		oldMoto.setCilindradas(novaMoto.getCilindradas());
         	}
       
         	//if(Double.) {
