@@ -24,7 +24,7 @@ public class Moto {
     private String nome;
     private String modelo;
     private String marca;
-    private double cilindradas;
+    private Double cilindradas;
     private int contador_dias;
     private int media_diaria_km;
 
@@ -95,7 +95,7 @@ public class Moto {
         this.marca = marca;
     }
 
-    public double getCilindradas() {
+    public Double getCilindradas() {
         return cilindradas;
     }
 

@@ -59,7 +59,23 @@ public class ControladorMoto {
         usuario = repositorioUsuario.findById(id);
         Moto oldMoto = usuario.get().getMoto();
         if (oldMoto != null) {
-           // oldMoto.setMedia_diaria_km(novaMoto.getMedia_diaria_km());
+        	if(novaMoto.getNome() != null) {
+        		oldMoto.setNome(novaMoto.getNome());
+        	}
+        	if(novaMoto.getModelo() != null) {
+        		oldMoto.setModelo(novaMoto.getModelo());
+        	}
+        	if(novaMoto.getMarca() != null) {
+        		oldMoto.setMarca(novaMoto.getMarca());
+        	}
+        	if(novaMoto.getCilindradas() != null) {
+        		
+        	}
+      
+        	//if(Double.) {
+        	//	oldMoto.setCilindradas(novaMoto.getCilindradas());
+        	//}
+        	
             oldMoto.setContador_dias(novaMoto.getContador_dias());
             oldMoto.setKm_atual_acelerador(novaMoto.getKm_atual_acelerador());
             oldMoto.setKm_atual_embreagem(novaMoto.getKm_atual_embreagem());
