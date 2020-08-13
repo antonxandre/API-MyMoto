@@ -28,21 +28,21 @@ public class Moto {
     private int contador_dias;
     private int media_diaria_km;
 
-    private double km_max_troca_oleo;
-    private double km_max_acelerador;
-    private double km_max_vela;
-    private double km_max_freio;
-    private double km_max_embreagem;
-    private double km_max_pneus;
-    private double km_max_suspensao;
+    private Double km_max_troca_oleo;
+    private Double km_max_acelerador;
+    private Double km_max_vela;
+    private Double km_max_freio;
+    private Double km_max_embreagem;
+    private Double km_max_pneus;
+    private Double km_max_suspensao;
 
-    private double km_atual_troca_oleo;
-    private double km_atual_acelerador;
-    private double km_atual_vela;
-    private double km_atual_freio;
-    private double km_atual_embreagem;
-    private double km_atual_pneus;
-    private double km_atual_suspensao;
+    private Double km_atual_troca_oleo;
+    private Double km_atual_acelerador;
+    private Double km_atual_vela;
+    private Double km_atual_freio;
+    private Double km_atual_embreagem;
+    private Double km_atual_pneus;
+    private Double km_atual_suspensao;
     
     
 
@@ -99,7 +99,7 @@ public class Moto {
         return cilindradas;
     }
 
-    public void setCilindradas(double cilindradas) {
+    public void setCilindradas(Double cilindradas) {
         this.cilindradas = cilindradas;
     }
 
@@ -139,115 +139,115 @@ public class Moto {
         this.id = id;
     }
 
-    public double getKm_max_troca_oleo() {
+    public Double getKm_max_troca_oleo() {
         return km_max_troca_oleo;
     }
 
-    public void setKm_max_troca_oleo(double km_max_troca_oleo) {
+    public void setKm_max_troca_oleo(Double km_max_troca_oleo) {
         this.km_max_troca_oleo = km_max_troca_oleo;
     }
 
-    public double getKm_max_acelerador() {
+    public Double getKm_max_acelerador() {
         return km_max_acelerador;
     }
 
-    public void setKm_max_acelerador(double km_max_acelerador) {
+    public void setKm_max_acelerador(Double km_max_acelerador) {
         this.km_max_acelerador = km_max_acelerador;
     }
 
-    public double getKm_max_vela() {
+    public Double getKm_max_vela() {
         return km_max_vela;
     }
 
-    public void setKm_max_vela(double km_max_vela) {
+    public void setKm_max_vela(Double km_max_vela) {
         this.km_max_vela = km_max_vela;
     }
 
-    public double getKm_max_freio() {
+    public Double getKm_max_freio() {
         return km_max_freio;
     }
 
-    public void setKm_max_freio(double km_max_freio) {
+    public void setKm_max_freio(Double km_max_freio) {
         this.km_max_freio = km_max_freio;
     }
 
-    public double getKm_max_embreagem() {
+    public Double getKm_max_embreagem() {
         return km_max_embreagem;
     }
 
-    public void setKm_max_embreagem(double km_max_embreagem) {
+    public void setKm_max_embreagem(Double km_max_embreagem) {
         this.km_max_embreagem = km_max_embreagem;
     }
 
-    public double getKm_max_pneus() {
+    public Double getKm_max_pneus() {
         return km_max_pneus;
     }
 
-    public void setKm_max_pneus(double km_max_pneus) {
+    public void setKm_max_pneus(Double km_max_pneus) {
         this.km_max_pneus = km_max_pneus;
     }
 
-    public double getKm_max_suspensao() {
+    public Double getKm_max_suspensao() {
         return km_max_suspensao;
     }
 
-    public void setKm_max_suspensao(double km_max_suspensao) {
+    public void setKm_max_suspensao(Double km_max_suspensao) {
         this.km_max_suspensao = km_max_suspensao;
     }
 
-    public double getKm_atual_troca_oleo() {
+    public Double getKm_atual_troca_oleo() {
         return km_atual_troca_oleo;
     }
 
-    public void setKm_atual_troca_oleo(double km_atual_troca_oleo) {
+    public void setKm_atual_troca_oleo(Double km_atual_troca_oleo) {
         this.km_atual_troca_oleo = km_atual_troca_oleo;
     }
 
-    public double getKm_atual_acelerador() {
+    public Double getKm_atual_acelerador() {
         return km_atual_acelerador;
     }
 
-    public void setKm_atual_acelerador(double km_atual_acelerador) {
+    public void setKm_atual_acelerador(Double km_atual_acelerador) {
         this.km_atual_acelerador = km_atual_acelerador;
     }
 
-    public double getKm_atual_vela() {
+    public Double getKm_atual_vela() {
         return km_atual_vela;
     }
 
-    public void setKm_atual_vela(double km_atual_vela) {
+    public void setKm_atual_vela(Double km_atual_vela) {
         this.km_atual_vela = km_atual_vela;
     }
 
-    public double getKm_atual_freio() {
+    public Double getKm_atual_freio() {
         return km_atual_freio;
     }
 
-    public void setKm_atual_freio(double km_atual_freio) {
+    public void setKm_atual_freio(Double km_atual_freio) {
         this.km_atual_freio = km_atual_freio;
     }
 
-    public double getKm_atual_embreagem() {
+    public Double getKm_atual_embreagem() {
         return km_atual_embreagem;
     }
 
-    public void setKm_atual_embreagem(double km_atual_embreagem) {
+    public void setKm_atual_embreagem(Double km_atual_embreagem) {
         this.km_atual_embreagem = km_atual_embreagem;
     }
 
-    public double getKm_atual_pneus() {
+    public Double getKm_atual_pneus() {
         return km_atual_pneus;
     }
 
-    public void setKm_atual_pneus(double km_atual_pneus) {
+    public void setKm_atual_pneus(Double km_atual_pneus) {
         this.km_atual_pneus = km_atual_pneus;
     }
 
-    public double getKm_atual_suspensao() {
+    public Double getKm_atual_suspensao() {
         return km_atual_suspensao;
     }
 
-    public void setKm_atual_suspensao(double km_atual_suspensao) {
+    public void setKm_atual_suspensao(Double km_atual_suspensao) {
         this.km_atual_suspensao = km_atual_suspensao;
     }
 

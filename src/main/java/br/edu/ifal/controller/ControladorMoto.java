@@ -70,12 +70,28 @@ public class ControladorMoto {
         	}
         	if(novaMoto.getCilindradas() != null) {
         		oldMoto.setCilindradas(novaMoto.getCilindradas());
-        	}
-      
-        	//if(Double.) {
-        	//	oldMoto.setCilindradas(novaMoto.getCilindradas());
-        	//}
-        	
+            }
+            if(novaMoto.getKm_max_acelerador() != null){
+            	oldMoto.setKm_max_acelerador(novaMoto.getKm_max_acelerador());
+            }
+            if(novaMoto.getKm_max_embreagem() != null) {
+            	oldMoto.setKm_max_embreagem(novaMoto.getKm_max_embreagem());
+            }
+            if(novaMoto.getKm_max_freio() != null) {
+            	oldMoto.setKm_max_freio(novaMoto.getKm_max_freio());
+            }
+            if(novaMoto.getKm_max_pneus() != null){
+            	oldMoto.setKm_max_pneus(novaMoto.getKm_max_pneus());
+            }
+            if(novaMoto.getKm_max_suspensao() != null){
+            	oldMoto.setKm_max_suspensao(novaMoto.getKm_max_suspensao());
+            }
+            if(novaMoto.getKm_max_troca_oleo() != null){
+            	oldMoto.setKm_max_troca_oleo(novaMoto.getKm_max_troca_oleo());
+            }
+            if(novaMoto.getKm_atual_vela() != null){
+            	oldMoto.setKm_max_vela(novaMoto.getKm_atual_vela());
+            }
             oldMoto.setContador_dias(novaMoto.getContador_dias());
             oldMoto.setKm_atual_acelerador(novaMoto.getKm_atual_acelerador());
             oldMoto.setKm_atual_embreagem(novaMoto.getKm_atual_embreagem());
