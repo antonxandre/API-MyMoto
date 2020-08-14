@@ -90,7 +90,7 @@ public class ControladorMoto {
             	oldMoto.setKm_max_troca_oleo(novaMoto.getKm_max_troca_oleo());
             }
             if(novaMoto.getKm_atual_vela() != null){
-            	oldMoto.setKm_max_vela(novaMoto.getKm_atual_vela());
+            	oldMoto.setKm_max_vela(novaMoto.getKm_max_vela());
             }
             oldMoto.setContador_dias(novaMoto.getContador_dias());
             oldMoto.setKm_atual_acelerador(novaMoto.getKm_atual_acelerador());
