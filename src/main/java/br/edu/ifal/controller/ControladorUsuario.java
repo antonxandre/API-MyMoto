@@ -52,6 +52,28 @@ public class ControladorUsuario {
 		verificarSeUsuarioExiste(id);
 		return repo.findById(id);
 	}
+	@GetMapping("/usuarios/social/{uid}")
+	public ResponseEntity<Usuario> buscarUsuarioSocial(@PathVariable(value = "uid") String uid) {
+		Iterable<Usuario> usuarios = repo.findAll();
+		
+		
+		for (Usuario usuario : usuarios) {
+			if(usuario.getTokenUid() != null) {
+			if(usuario.getTokenUid().equals(uid)) {
+				System.out.println(usuario);
+				return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+			}
+		}
+				
+		}
+		return new ResponseEntity<Usuario>(new Usuario(), HttpStatus.NOT_FOUND);
+		
+		
+		
+
+		 
+		
+	}
 
 	@RequestMapping(value = "/usuarios", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Usuario> salvarUsuario(@RequestBody @Valid Usuario usuario) {
@@ -61,7 +83,7 @@ public class ControladorUsuario {
 	}
 
 	@RequestMapping(value = "/usuarios/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Usuario> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Usuario newUsuario) {
+	public ResponseEntity<Usuario> Put(@PathVariable(value = "id") long id,  @RequestBody Usuario newUsuario) {
 		verificarSeUsuarioExiste(id);
 
 		Optional<Usuario> oldUsuario = repo.findById(id);
@@ -71,9 +93,9 @@ public class ControladorUsuario {
 			usuario.setLogin(newUsuario.getLogin());
 			usuario.setEmail(newUsuario.getEmail());
 			usuario.setMoto(newUsuario.getMoto());
+			usuario.setTokenUid(newUsuario.getTokenUid());
 			repo.save(usuario);
 			return new ResponseEntity<Usuario>(usuario, HttpStatus.OK.CREATED);
-
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
